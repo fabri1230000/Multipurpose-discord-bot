@@ -48,7 +48,7 @@ module.exports = {
           .setCustomId('MenuSelection')
           .setMaxValues(1) //OPTIONAL, this is how many values you can have at each selection
           .setMinValues(1) //OPTIONAL , this is how many values you need to have at each selection
-          .setPlaceholder('Click me to setup the Menu Ticket System!')
+          .setPlaceholder('Haz click para configurar los Menu-Tickets')
           .addOptions(
             menuoptions.slice(0, 25).map(option => {
               let Obj = {
@@ -65,7 +65,7 @@ module.exports = {
           .setCustomId('MenuSelection2')
           .setMaxValues(1) //OPTIONAL, this is how many values you can have at each selection
           .setMinValues(1) //OPTIONAL , this is how many values you need to have at each selection
-          .setPlaceholder('Click me to setup the Menu Ticket System!')
+          .setPlaceholder('Haz click para configurar los Menu-Tickets')
           .addOptions(
             menuoptions.slice(25, 50).map(option => {
               let Obj = {
@@ -82,7 +82,7 @@ module.exports = {
           .setCustomId('MenuSelection3')
           .setMaxValues(1) //OPTIONAL, this is how many values you can have at each selection
           .setMinValues(1) //OPTIONAL , this is how many values you need to have at each selection
-          .setPlaceholder('Click me to setup the Menu Ticket System!')
+          .setPlaceholder('Haz click para configurar los Menu-Tickets')
           .addOptions(
             menuoptions.slice(50, 75).map(option => {
               let Obj = {
@@ -99,7 +99,7 @@ module.exports = {
           .setCustomId('MenuSelection4')
           .setMaxValues(1) //OPTIONAL, this is how many values you can have at each selection
           .setMinValues(1) //OPTIONAL , this is how many values you need to have at each selection
-          .setPlaceholder('Click me to setup the Menu Ticket System!')
+          .setPlaceholder('Haz click para configurar los Menu-Tickets')
           .addOptions(
             menuoptions.slice(75, 100).map(option => {
               let Obj = {
@@ -116,13 +116,13 @@ module.exports = {
         //define the embed
         let MenuEmbed = new Discord.MessageEmbed()
           .setColor(es.color)
-          .setAuthor(client.getAuthor('Menu Ticket Setup', 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/envelope_2709-fe0f.png', 'https://discord.gg/milrato'))
+          .setAuthor(client.getAuthor('Menu Tickets', 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/envelope_2709-fe0f.png', 'https://discord.gg/7drhkaXxSF'))
           .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable2"]))
 
         //send the menu msg
         let menumsg = await message.reply({
           embeds: [MenuEmbed],
-          components: [row1, row2, row3, row4, new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL("https://youtu.be/QGESDc31d4U").setLabel("Tutorial Video").setEmoji("840260133686870036"))]
+          components: [row1, row2, row3, row4]
         })
         //Create the collector
         const collector = menumsg.createMessageComponentCollector({
@@ -141,7 +141,7 @@ module.exports = {
             theDB = client.menuticket; //change to the right database
             second_layer(SetupNumber)
           } else menu?.reply({
-            content: `<:no:833101993668771842> You are not allowed to do that! Only: <@${cmduser.id}>`,
+            content: `<:no:833101993668771842> ¡No tienes permitido hacer eso! Solamente: <@${cmduser.id}>`,
             ephemeral: true
           });
         });
@@ -150,7 +150,7 @@ module.exports = {
           menumsg.edit({
             embeds: [menumsg.embeds[0].setDescription(`~~${menumsg.embeds[0].description}~~`)],
             components: [],
-            content: `<a:yes:833101995723194437> **Selected: \`${collected && collected.first() && collected.first().values ? collected.first().values[0] : "Nothing"}\`**`
+            content: `<a:ys4:989016203525750825> **Seleccionado: \`${collected && collected.first() && collected.first().values ? collected.first().values[0] : "Nothing"}\` ****`
           }).catch(() => { });
         });
       }
@@ -177,39 +177,24 @@ module.exports = {
           ]
         }, pre);
         let menuoptions = [{
-          value: "Send the Config	Message",
-          description: `(Re) Send the Open a Ticket Message (with MENU)`,
-          emoji: "👍"
+          value: "Enviar Mensaje Configurado",
+          description: `(Re) Envia al Mensaje (con Menu)`,
+          emoji: "989016203525750825"
         },
         {
-          value: "Add Ticket Option",
-          description: `Add up to 25 different open-Ticket-Option`,
+          value: "Añadir Opción de Ticket",
+          description: `Añade hasta 25 diferentes opciónes`,
           emoji: "📤"
         },
         {
-          value: "Edit Ticket Option",
-          description: `Edit one of your Ticket Options Data`,
-          emoji: "✒️"
+          value: "Editar Opción de Ticket",
+          description: `Edita una de tus opciónes`,
+          emoji: "🖊"
         },
         {
-          value: "Manage General Access",
-          description: `Add/Remove Users/Roles`,
-          emoji: "👍"
-        },
-        {
-          value: "Remove Ticket Option",
-          description: `Remove a open-Ticket-Option`,
+          value: "Remover Opción de Ticket",
+          description: `Remueve una Opción`,
           emoji: "🗑"
-        },
-        {
-          value: "Closed Ticket Category",
-          description: `When Closing a Ticket, it will be moved to there`,
-          emoji: "✂️"
-        },
-        {
-          value: "Ticket Claim System",
-          description: `Manage the Claim System for this Ticket System.`,
-          emoji: "✅"
         },
         ]
         //define the selection
@@ -217,7 +202,7 @@ module.exports = {
           .setCustomId('MenuSelection')
           .setMaxValues(1)
           .setMinValues(1)
-          .setPlaceholder('Click me to setup the Menu-Ticket System!')
+          .setPlaceholder('Haz click para configurar los Menu-Tickets')
           .addOptions(
             menuoptions.map(option => {
               let Obj = {
@@ -231,14 +216,14 @@ module.exports = {
         //define the embed
         let MenuEmbed = new Discord.MessageEmbed()
           .setColor(es.color)
-          //.setAuthor('Menu Ticket Setup', 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/envelope_2709-fe0f.png', 'https://discord.gg/milrato')
-          .setAuthor({ name: "Menu Ticket Setup", iconURL: "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/envelope_2709-fe0f.png", url: "https://discord.gg/milrato" })
+      
+          .setAuthor(client.getAuthor('Menu Tickets', 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/envelope_2709-fe0f.png', 'https://discord.gg/7drhkaXxSF'))
           .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable2"]))
 
         //send the menu msg
         let menumsg = await message.reply({
           embeds: [MenuEmbed],
-          components: [new MessageActionRow().addComponents(Selection), new MessageActionRow().addComponents(new MessageButton().setStyle("LINK").setURL("https://youtu.be/QGESDc31d4U").setLabel("Tutorial Video").setEmoji("840260133686870036"))]
+          components: [new MessageActionRow().addComponents(Selection)]
         })
         //Create the collector
         const collector = menumsg.createMessageComponentCollector({
@@ -263,7 +248,7 @@ module.exports = {
           menumsg.edit({
             embeds: [menumsg.embeds[0].setDescription(`~~${menumsg.embeds[0].description}~~`)],
             components: [],
-            content: `<a:yes:833101995723194437> **Selected: \`${collected && collected.first() && collected.first().values ? collected.first().values[0] : "Nothing"}\`**`
+            content: `<a:ys4:989016203525750825> **Seleccionado: \`${collected && collected.first() && collected.first().values ? collected.first().values[0] : "Nothing"}\`**`
           })
         });
       }
@@ -437,7 +422,7 @@ module.exports = {
               }
             }
           } break;
-          case "Send the Config	Message": {
+          case "Enviar Mensaje Configurado": {
             await message.guild.emojis.fetch().catch(() => { });
             let data = theDB.get(message.guild.id, pre + ".data");
             let settings = theDB.get(message.guild.id, pre);
@@ -448,8 +433,8 @@ module.exports = {
               embeds: [
                 new MessageEmbed()
                   .setColor(es.color)
-                  .setTitle("What should be the Text to display in the Embed?")
-                  .setDescription(`For Example:\n> \`\`\`To Open a Ticket, select the Topic you need in the Selection down below!\`\`\``)
+                  .setTitle("Cual debería de ser el Texto a Mostrar en el Embed?")
+                  .setDescription(`Por ejemplo:\n> \`\`\`Para abrir un Ticket, selecciona en qué necesitas soporte!\`\`\``)
               ]
             });
 
@@ -463,8 +448,8 @@ module.exports = {
                 embeds: [
                   new MessageEmbed()
                     .setColor(es.color)
-                    .setTitle("In where should I send the Open a New Ticket Message?")
-                    .setDescription(`Please Ping the Channel now!\n> Just type: \`#channel\`${settings.channelId && message.guild.channels.cache.get(settings.channelId) ? `| Before it was: <#${settings.channelId}>` : settings.channelId ? `| Before it was: ${settings.channelId} (Channel got deleted)` : ""}\n\nYou can edit the Title etc. afterwards by using the \`${prefix}editembed\` Command`)
+                    .setTitle("En donde debería de enviar el mensaje?")
+                    .setDescription(`Menciona el canal!\n> Escribe: \`#Canal\`${settings.channelId && message.guild.channels.cache.get(settings.channelId) ? `| Canal del Ticket: <#${settings.channelId}>` : settings.channelId ? `| Canal del Ticket: ${settings.channelId} (Channel got deleted)` : ""}\n\nPuedes editar el titulo etc. después usand \`${prefix}editembed\` Command`)
                 ]
               });
 
@@ -482,13 +467,13 @@ module.exports = {
                   .setThumbnail(es.thumb ? es.footericon && (es.footericon.includes("http://") || es.footericon.includes("https://")) ? es.footericon : client.user.displayAvatarURL() : null)
                   .setFooter(client.getFooter(es))
                   .setDescription(msgContent)
-                  .setTitle("📨 Open a Ticket")
+                  .setTitle("📨 Abrir un Ticket")
                 //define the selection
                 let Selection = new MessageSelectMenu()
                   .setCustomId('MenuSelection')
                   .setMaxValues(1)
                   .setMinValues(1)
-                  .setPlaceholder('Click me to Access the Menu-Ticket System!')
+                  .setPlaceholder('¡Seleccione el tipo de ayuda!')
                   .addOptions(
                     data.map((option, index) => {
                       let Obj = {
@@ -532,7 +517,7 @@ module.exports = {
                 }).then(msg => {
                   theDB.set(message.guild.id, msg.id, pre + ".messageId");
                   theDB.set(message.guild.id, channel.id, pre + ".channelId");
-                  message.reply(`Successfully Setupped the Menu-Ticket in <#${channel.id}>`)
+                  message.reply(`<a:ys4:989016203525750825> Configurado en <#${channel.id}>`)
                 });
               } else {
                 return message.reply("<:no:833101993668771842> **You did not ping a valid Channel!**")
@@ -542,7 +527,7 @@ module.exports = {
             }
           }
             break;
-          case "Add Ticket Option": {
+          case "Añadir Opción de Ticket": {
             let data = theDB.get(message.guild.id, pre + ".data");
             if (data.length >= 25) {
               return message.reply("<:no:833101993668771842> **You reached the limit of 25 different Options!** Remove another Option first!")
@@ -552,8 +537,8 @@ module.exports = {
               embeds: [
                 new MessageEmbed()
                   .setColor(es.color)
-                  .setTitle("What should be the VALUE and DESCRIPTION of the Menu-Option?")
-                  .setDescription(`**Usage:** \`VALUE++DESCRIPTION\`\n> **Note:** The maximum length of the VALUE is: \`25 Letters\`\n> **Note:** The maximum length of the DESCRIPTION is: \`50 Letters\`\n\nFor Example:\n> \`\`\`General Support++Get Help for anything you want!\`\`\``)
+                  .setTitle("Cual debería de ser el VALOR y la DESCRIPCIÓN de la Opción?")
+                  .setDescription(`**USO:** \`VALOR++DESCRIPCIÓN\`\n> **Nota:** La longitud máxima de VALOR es: \`25 Letters\`\n> **Nota:** La longitud máxima de la DESCRIPCIÓN es \`50 Letters\`\n\nPor Ejemplo:\n> \`\`\`Soporte General++Recibe ayuda en lo que necesites!\`\`\``)
               ]
             });
             let collected = await tempmsg.channel.awaitMessages({
@@ -574,8 +559,8 @@ module.exports = {
                 embeds: [
                   new MessageEmbed()
                     .setColor(es.color)
-                    .setTitle("In Which Category should the new Tickets of this Option open?")
-                    .setDescription(`**This is suggested to fill it in, because there are settings for SYNCING to that Category!**\nJust send the ID of it, send \`no\` for no category!\nFor Example:\n> \`840332704494518292\``)
+                    .setTitle("En qué categoría se deberían de abrir los Tickets?")
+                    .setDescription(`**Esto es sugerido para rellenar ya que, hay ajustes para SINCRONIZAR con esa Categoría!**\nEnvia la ID de la Categoría / envia \`no\` para dejarlo sin categoría!\nPor Ejemploe:\n> \`840332704494518292\``)
                 ]
               });
               let collected2 = await tempmsg.channel.awaitMessages({
@@ -593,8 +578,8 @@ module.exports = {
                   embeds: [
                     new MessageEmbed()
                       .setColor(es.color)
-                      .setTitle("What should be the Reply Message when someone Opens a Ticket?")
-                      .setDescription(`For Example:\n> \`\`\`{user} Welcome to the Support! Tell us what you need help with!\`\`\``)
+                      .setTitle("Cual debería de ser el mensaje de bievenida cuando alguien abre un Ticket?")
+                      .setDescription(`Por Ejempplo:\n> \`\`\`{user} Bienvenido al Soporte! Dinos en qué necesitas ayuda!\`\`\``)
                   ]
                 });
                 let collected3 = await tempmsg.channel.awaitMessages({
@@ -609,8 +594,8 @@ module.exports = {
                     embeds: [
                       new MessageEmbed()
                         .setColor(es.color)
-                        .setTitle("What should be the new Default Ticket Name?")
-                        .setDescription(`Currently/Suggested it's: \`${defaultname}\` aka it will turn into: \`${defaultname.replace("{member}", message.author.username).replace("{count}", 0)}\`\n> \`{member}\` ... will get replaced with the ticket opening username\n> \`{count}\` ... Will get replaced with the TICKET ID (COUNT)\n**Send the Message now!**`)
+                        .setTitle("Cual debería de ser el NOMBRE por DEFECTO?")
+                        .setDescription(`Actual/Sugerido es:  \`${defaultname}\` que se convertirá en: \`${defaultname.replace("{member}", message.author.username).replace("{count}", 0)}\`\n> \`{member}\`... será reemplazado por el nombre del usuario que ha abierto el ticket\n> \`{count}\` ... será reemplazado por la ID del Ticket\n**Envía el mensaje!**`)
                     ]
                   });
                   let collected4 = await tempmsg.channel.awaitMessages({
@@ -630,12 +615,12 @@ module.exports = {
 
                     var rermbed = new MessageEmbed()
                       .setColor(es.color)
-                      .setTitle("What should be the EMOJI to be displayed?")
-                      .setDescription(`React to __THIS MESSAGE__ with the Emoji you want!\n> Either click on the default Emoji or add a CUSTOM ONE/Standard`)
+                      .setTitle("Cual debería de ser el EMOJI para esta opción?")
+                      .setDescription(`Reacciona en este mensaje con el emoji deseado\n\n Reacciona con <:numero1:989991546877263872> para usar el emoji por defecto (<:numero1:989991546877263872>)`)
 
                     var emoji, emojiMsg;
                     message.reply({ embeds: [rermbed] }).then(async msg => {
-                      await msg.react(NumberEmojiIds[data.length + 1]).catch(console.warn);
+                      await msg.react("989991546877263872").catch(console.warn);
                       msg.awaitReactions({
                         filter: (reaction, user) => user.id == cmduser.id,
                         max: 1,
@@ -650,7 +635,7 @@ module.exports = {
                           emoji = collected.first().emoji?.name;
                           emojiMsg = collected.first().emoji?.name;
                         } else {
-                          message.reply(":x: **No valid emoji added, using default EMOJI**");
+                          message.reply(":x: **No se agregó emoji válido, usando EMOJI predeterminado**");
                           emoji = null;
                           emojiMsg = NumberEmojis[data.length];
                         }
@@ -663,14 +648,14 @@ module.exports = {
                           }
                         } catch (e) {
                           console.log(e)
-                          message.reply(":x: **Could not use the CUSTOM EMOJI you added, as I can't access it / use it as a reaction/emoji for the menu**\nUsing default emoji!");
+                          message.reply(":x: **No pude usar el EMOJI PERSONALIZADO que agregaste, ya que no puedo acceder a él/usarlo como una reacción/emoji para el menú**\nUso de emojis predeterminados!");
                           emoji = null;
                           emojiMsg = NumberEmojis[data.length];
                         }
                         finished();
 
                       }).catch(() => {
-                        message.reply(":x: **No valid emoji added, using default EMOJI**");
+                        message.reply(":x: **NNo se agregó emoji válido, usando EMOJI predeterminado**");
                         emoji = null;
                         emojiMsg = NumberEmojis[data.length];
                         finished();
@@ -689,14 +674,14 @@ module.exports = {
                         embeds: [
                           new MessageEmbed()
                             .setColor(es.color)
-                            .setTitle("Successfully added the New Data to the List!")
-                            .setDescription(`Make sure to re-send the Message, so that it's also updating it!\n> \`${prefix}setup-menuticket\` --> Send Config Message`)
-                            .addField("Value:", `> ${value}`.substring(0, 1024), true)
-                            .addField("Description:", `> ${description}`.substring(0, 1024), true)
-                            .addField("Category:", `> <#${category}> (${category})`.substring(0, 1024), true)
-                            .addField("Defaultname:", `> \`${defaultname}\` --> \`${defaultname.replace("{member}", message.author.username).replace("{count}", 0)}\``.substring(0, 1024), true)
-                            .addField("ReplyMsg:", `> ${replyMsg}`.substring(0, 1024), true)
-                            .addField("Emoji:", `> ${emojiMsg}`.substring(0, 1024), true)
+                            .setTitle("<a:ys4:989016203525750825> Datos Añadidos a la Lista!")
+                            .setDescription(`Asegurate de re-enviar el mensaje, para actualizar la información!\n> \`${prefix}setup-menuticket\`  --> Enviar Mensaje Configurado`)
+                            .addField("Valor:", `> ${value}`.substring(0, 1024), true)
+                            .addField("Descripción:", `> ${description}`.substring(0, 1024), true)
+                            .addField("Categoría:", `> <#${category}> (${category})`.substring(0, 1024), true)
+                            .addField("Nombre por Defecto:", `> \`${defaultname}\` --> \`${defaultname.replace("{member}", message.author.username).replace("{count}", 0)}\``.substring(0, 1024), true)
+                            .addField("Mensaje de Respuesta::", `> ${replyMsg}`.substring(0, 1024), true)
+                            .addField("Emoji de Ticket:", `> ${emojiMsg}`.substring(0, 1024), true)
                         ]
                       });
                     }
@@ -704,38 +689,37 @@ module.exports = {
 
 
                   } else {
-                    return message.reply("<:no:833101993668771842> **You did not enter a Valid Message in Time! CANCELLED!**")
+                    return message.reply("<:nope3:989982433522905098> **¡No ingresó un mensaje válido a tiempo! CANCELADO!**")
                   }
                 } else {
-                  return message.reply("<:no:833101993668771842> **You did not enter a Valid Message in Time! CANCELLED!**")
+                  return message.reply("<:nope3:989982433522905098> **¡No ingresó un mensaje válido a tiempo! CANCELADO!**")
                 }
               } else {
-                return message.reply("<:no:833101993668771842> **You did not enter a Valid Message in Time! CANCELLED!**")
+                return message.reply("<:nope3:989982433522905098> **¡No ingresó un mensaje válido a tiempo! CANCELADO!**")
               }
             } else {
-              return message.reply("<:no:833101993668771842> **You did not enter a Valid Message in Time! CANCELLED!**")
+              return message.reply("<:nope3:989982433522905098> **¡No ingresó un mensaje válido a tiempo! CANCELADO!**")
             }
           }
             break;
-          case "Edit Ticket Option": {
+          case "Editar Opción de Ticket": {
 
 
             let data = theDB.get(message.guild.id, pre + ".data");
             if (!data || data.length < 1) {
-              return message.reply("<:no:833101993668771842> **There are no Open-Ticket-Options to remove**")
+              return message.reply("<:no:833101993668771842> **No hay una Opción que pueda eliminare**")
             }
             let embed = new MessageEmbed()
               .setColor(es.color)
-              .setThumbnail(es.thumb ? es.footericon && (es.footericon.includes("http://") || es.footericon.includes("https://")) ? es.footericon : client.user.displayAvatarURL() : null)
               .setFooter(client.getFooter(es))
-              .setDescription("Just pick the Options you want to edit!")
-              .setTitle("Which Option do you want to edit?")
+              .setDescription("Que opción quieres editar?")
+              .setTitle("Elige la opción que quieras editar!")
             //define the selection
             let Selection = new MessageSelectMenu()
               .setCustomId('MenuSelection')
               .setMaxValues(1)
               .setMinValues(1)
-              .setPlaceholder('Click me to setup the Menu-Ticket System!')
+              .setPlaceholder('Elige una opción para editar!')
               .addOptions(
                 data.map((option, index) => {
                   let Obj = {
@@ -758,7 +742,7 @@ module.exports = {
                 .setCustomId('MenuSelection')
                 .setMaxValues(1)
                 .setMinValues(1)
-                .setPlaceholder('Click me to Access the Menu-Ticket System!')
+                .setPlaceholder('Haz click para configurar los Menu-Tickets')
                 .addOptions(
                   data.map((option, index) => {
                     let Obj = {
@@ -791,9 +775,19 @@ module.exports = {
 
 
                 let menuoptions = [{
-                  value: "Change Value&Description".substring(0, 25),
-                  description: `Change the Value, etc. of the display-Option`,
-                  emoji: "✒️"
+                  value: "Editar Valor y Descripción".substring(0, 25),
+                  description: `Editar el Valor y Descripción de la Opción`,
+                  emoji: "⚙️"
+                },
+                {
+                  value: "Editar Nombre de los Tickets",
+                  description: `Edit el Nombre de los Ticket-canales`,
+                  emoji: "🎟️"
+                },
+                {
+                  value: "Editar Nombre de los Tickets Cerrados",
+                  description: `Edit el Nombre de los Ticket-canales Cerrados`,
+                  emoji: "🚫"
                 },
                 {
                   value: "Change Open Category",
@@ -801,27 +795,67 @@ module.exports = {
                   emoji: "✂️"
                 },
                 {
-                  value: "Change Default-Name",
-                  description: `Change the Default Ticket Name`,
-                  emoji: "🎫"
+                  value: "Cambiar Emoji de la Option",
+                  description: `Cambiar el Emoji de la Option del Menu`,
+                  emoji: "⭐"
                 },
                 {
-                  value: "Change Emoji",
-                  description: `Change the Default Emoji`,
-                  emoji: "👍"
+                  value: "Editar Mensaje",
+                  description: `Cambiar el Mensaje Cuando se abre el Ticket`,
+                  emoji: "🛠️"
                 },
-                {
-                  value: "Change Reply Message",
-                  description: `Change the Message when he opened the Ticket`,
+                  {
+                    value: "Añadir rol de Tickets",
+                    description: `Añade un rol que pueda dar soporte a los Tickets`,
+                    emoji: "😎"
+
+                  },
+                  {
+                    value: "Remover Rol de Tickets",
+                    description: `Remueve un rol de soporte de los Tickets`,
+                    emoji: "🗑"
+              
+                  },
+                  {
+                    value: "Categoría de Tickets",
+                    description: `Define la Categoría donde se crearan los Tickets`,
+                    emoji: "🔘"
+                  },
+                  {
+                    value: "Categoría de Tickets Cerrados",
+                    description: `Define la Categoría para Cerrar el ticekt`,
+                    emoji: "🔐"
+                  },
+                  {
+                    value: "Sistema de Reclamación",
+                    description: `Configura el Sistema de Reclamación`,
+                    emoji: "989016203525750825"
+                  },
+                  {
+                    value: "Canal de Registro",
+                    description: `Define un canal para Registrar los Tickets`,
+                    emoji: "📜"
+                  },
+                  {
+                  
+    
+                  value: "Cambiar mensaje de respuesta",
+                  description: `Cambiar el Mensaje cuando abrió el Ticket`,
                   emoji: "✅"
                 },
+        
+              {
+                value: "Cancelar",
+                description: `Cancelar y finalizar`,
+                emoji: "862306766338523166"
+              },
                 ]
                 //define the selection
                 let Selection = new MessageSelectMenu()
                   .setCustomId('MenuSelection')
                   .setMaxValues(1)
                   .setMinValues(1)
-                  .setPlaceholder(`Click me to edit the ${index}. Option!`)
+                  .setPlaceholder(`Haz click para configurar los Menu-Tickets`)
                   .addOptions(
                     menuoptions.map(option => {
                       let Obj = {
@@ -835,7 +869,7 @@ module.exports = {
                 //define the embed
                 let MenuEmbed = new Discord.MessageEmbed()
                   .setColor(es.color)
-                  .setAuthor(client.getAuthor('Menu Ticket Setup', 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/envelope_2709-fe0f.png', 'https://discord.gg/milrato'))
+                  .setAuthor(client.getAuthor('Soporte General', 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/envelope_2709-fe0f.png', 'https://discord.gg/7drhkaXxSF'))
                   .setDescription(eval(client.la[ls]["cmds"]["setup"]["setup-ticket"]["variable2"]))
 
                 //send the menu msg
@@ -866,20 +900,20 @@ module.exports = {
                   menumsg.edit({
                     embeds: [menumsg.embeds[0].setDescription(`~~${menumsg.embeds[0].description}~~`)],
                     components: [],
-                    content: `<a:yes:833101995723194437> **Selected: \`${collected && collected.first() && collected.first().values ? collected.first().values[0] : "Nothing"}\`**`
+                    content: `<a:ys4:989016203525750825> **Seleccionado: \`${collected && collected.first() && collected.first().values ? collected.first().values[0] : "Nothing"}\`**`
                   })
                 });
 
                 async function handle_the_picks3(optionhandletype) {
 
                   switch (optionhandletype) {
-                    case `Change Value&Description`.substring(0, 25): {
+                    case `Editar Valor y Descripción`.substring(0, 25): {
                       let tempmsg = await message.reply({
                         embeds: [
                           new MessageEmbed()
                             .setColor(es.color)
-                            .setTitle("What should be the VALUE and DESCRIPTION of the Menu-Option?")
-                            .setDescription(`**Usage:** \`VALUE++DESCRIPTION\`\n> **Note:** The maximum length of the VALUE is: \`25 Letters\`\n> **Note:** The maximum length of the DESCRIPTION is: \`50 Letters\`\n\nFor Example:\n> \`\`\`General Support++Get Help for anything you want!\`\`\``)
+                            .setTitle("Cual debería de ser el VALOR y DESCRIPCIÓN de esta opcion?")
+                            .setDescription(`**Uso:** \`VALOR++DESCRIPCIÓN\`\n> **Nota:** La longitud máxima de VALOR es:  \`25 Letters\`\n> **Nota:** La longitud máxima de la DESCRIPCIÓN es:  \`50 Letters\`\n\nPor Ejemplo:\n> \`\`\`Soporte General++Recibe ayuda en lo que necesites!\`\`\``)
                         ]
                       });
                       let collected = await tempmsg.channel.awaitMessages({
@@ -888,11 +922,11 @@ module.exports = {
                         time: 90000, errors: ["time"]
                       });
                       if (collected && collected.first().content) {
-                        if (!collected.first().content.includes("++")) return message.reply("<:no:833101993668771842> **Invalid Usage! Please mind the Usage and check the Example**")
+                        if (!collected.first().content.includes("++")) return message.reply("<:nope3:989982433522905098> **¡Uso no válido! Tenga en cuenta el uso y verifique el ejemplo**")
                         let value = collected.first().content.split("++")[0].trim().substring(0, 25);
                         let index2 = data.findIndex(v => v.value == value);
                         if (index2 >= 0 && index != index2) {
-                          return message.reply("<:no:833101993668771842> **Options can't have the SAME VALUE!** There is already an Option with that Value!");
+                          return message.reply("<:nope3:989982433522905098> **Las Opciones no pueden tener EL MISMO VALOR!** Ya hay una Opción con ese Valor!");
                         }
                         let description = collected.first().content.split("++")[1].trim().substring(0, 50);
                         data[index].value = value;
@@ -907,7 +941,7 @@ module.exports = {
                         embeds: [
                           new MessageEmbed()
                             .setColor(es.color)
-                            .setTitle("In Which Category should the new Tickets of this Option open?")
+                            .setTitle("Escribe la Categoría de los Tickets!")
                             .setDescription(`**This is suggested to fill it in, because there are settings for SYNCING to that Category!**\n\nJust send the ID of it, send \`no\` for no category!\nFor Example:\n> \`840332704494518292\``)
                         ]
                       });
@@ -924,14 +958,14 @@ module.exports = {
                       }
                       return message.reply("<:no:833101993668771842> **Invalid Category-ID added**")
                     } break;
-                    case `Change Default-Name`: {
+                    case `Editar Nombre de los Tickets`: {
                       let defaultname = "🎫・{count}・{member}";
                       let tempmsg = await message.reply({
                         embeds: [
                           new MessageEmbed()
                             .setColor(es.color)
-                            .setTitle("What should be the new Default Ticket Name?")
-                            .setDescription(`Currently/Suggested it's: \`${defaultname}\` aka it will turn into: \`${defaultname.replace("{member}", message.author.username).replace("{count}", 0)}\`\n> \`{member}\` ... will get replaced with the ticket opening username\n> \`{count}\` ... Will get replaced with the TICKET ID (COUNT)\n**Send the Message now!**`)
+                            .setTitle("Cual debería de ser el Nombre de los Tickets?")
+                            .setDescription(`Actual/Sugerido es:  \`${defaultname}\` que se convertirá en: \`${defaultname.replace("{member}", message.author.username).replace("{count}", 0)}\`\n> \`{member}\` ... será reemplazado por el nombre del usuario que ha abierto el ticket\n> \`{count}\` ... será reemplazado por el nº de ticket\n**Envia el mensaje!**`)
                         ]
                       });
                       let collected = await tempmsg.channel.awaitMessages({
@@ -939,24 +973,31 @@ module.exports = {
                         max: 1,
                         time: 90000, errors: ["time"]
                       });
-                      if (!collected4.first().content || !collected4.first().content.includes("{member}")) {
-                        return message.reply("You need to have {member} somewhere, using the SUGGESTION DEFAULTNAME (you change it via edit)");
-                      } else if (!collected4.first().content || collected4.first().content.length > 32) {
-                        return message.reply("A Channelname can't be longer then 32 Characters, using the SUGGESTION DEFAULTNAME (you change it via edit)");
-                      } else {
-                        data[index].defaultname = collected4.first().content
-                        return finished();
-                      }
+                      let content = collected.first().content;
+                if(!collected4.first().content || !collected4.first().content.includes("{member}")) {
+                  return message.reply("You need to have {member} somewhere")
+                }
+                if (!content || content.length > 32) {
+                  return message.reply("A Channelname can't be longer then 32 Characters")
+                }
+                defaultname = content;
+                client.setups.set(message.guild.id, defaultname, `ticketsystem${SetupNumber}.defaultname`);
+                return message.reply({
+                  embeds: [new Discord.MessageEmbed()
+                    .setColor(es.color)
+                    .setTitle(`<a:ys2:934869188349161492> Cambiado el Nombre de los Tickets a \`${defaultname}\``)
+                  ]
+                });
                     } break;
-                    case `Change Emoji`: {
+                    case `Cambiar Emoji de la Option`: {
                       var rermbed = new MessageEmbed()
                         .setColor(es.color)
-                        .setTitle("What should be the EMOJI to be displayed?")
-                        .setDescription(`React to __THIS MESSAGE__ with the Emoji you want!\n> Either click on the default Emoji or add a CUSTOM ONE/Standard`)
+                        .setTitle("Cual debería de ser el EMOJI de esta Opción?")
+                        .setDescription(`Reacciona en **_ESTE MENSAJE_** con el emoji deseado\n\n Reacciona con <:numero1:989991546877263872> para usar el emoji normal (<:numero1:989991546877263872>)`)
 
                       var emoji, emojiMsg;
                       message.reply({ embeds: [rermbed] }).then(async msg => {
-                        await msg.react(NumberEmojiIds[data.length]).catch(console.warn);
+                        await msg.react("989991546877263872").catch(console.warn);
                         msg.awaitReactions({
                           filter: (reaction, user) => user.id == cmduser.id,
                           max: 1,
@@ -987,7 +1028,7 @@ module.exports = {
                             }
                           } catch (e) {
                             console.log(e)
-                            message.reply(":x: **Could not use the CUSTOM EMOJI you added, as I can't access it / use it as a reaction/emoji for the menu**\nUsing default emoji!");
+                            message.reply(":x: **TIMEOUT! Usando el emoji por defecto (<:numero1:989991546877263872>)");
                             data[index].emoji = null;
                             data[index].emojiMsg = NumberEmojis[data.length];
                           }
@@ -1001,13 +1042,13 @@ module.exports = {
                         });
                       })
                     } break;
-                    case `Change Reply Message`: {
+                    case `Cambiar mensaje de respuesta`: {
                       let tempmsg = await message.reply({
                         embeds: [
                           new MessageEmbed()
                             .setColor(es.color)
-                            .setTitle("What should be the Reply Message when someone Opens a Ticket?")
-                            .setDescription(`For Example:\n> \`\`\`{user} Welcome to the Support! Tell us what you need help with!\`\`\``)
+                            .setTitle("Que texto de respuesta se tiene que mostrar cuando alguien intente abrir un ticket?")
+                            .setDescription(`Por ejemploe:\n> \`\`\`{user} Bienvenido al Soporte! Dinos en qué necesitas ayuda\`\`\``)
                         ]
                       });
                       let collected = await tempmsg.channel.awaitMessages({
@@ -1039,14 +1080,14 @@ module.exports = {
                     embeds: [
                       new MessageEmbed()
                         .setColor(es.color)
-                        .setTitle("**Successfully edited:**")
-                        .setDescription(`>>> ${menu?.values.map(i => `\`${i}\``).join(", ")}\n\nDon't forget to resend the Ticket Config-Message!`)
-                        .addField("Value:", `> ${value}`.substring(0, 1024), true)
-                        .addField("Description:", `> ${description}`.substring(0, 1024), true)
-                        .addField("Category:", `> <#${category}> (${category})`.substring(0, 1024), true)
-                        .addField("Defaultname:", `> \`${defaultname}\` --> \`${defaultname.replace("{member}", message.author.username).replace("{count}", 0)}\``.substring(0, 1024), true)
-                        .addField("ReplyMsg:", `> ${replyMsg}`.substring(0, 1024), true)
-                        .addField("Emoji:", `> ${emojiMsg}`.substring(0, 1024), true)
+                        .setTitle("<a:ys4:989016203525750825> Datos Añadidos a la Lista!")
+                        .setDescription(`>>> ${menu?.values.map(i => `\`${i}\``).join(", ")}\n\nNo olvide volver a enviar el mensaje de configuración del ticket!`)
+                        .addField("Valor:", `> ${value}`.substring(0, 1024), true)
+                        .addField("Descripción:", `> ${description}`.substring(0, 1024), true)
+                        .addField("Categoría:", `> <#${category}> (${category})`.substring(0, 1024), true)
+                        .addField("Nombre por Defecto:", `> \`${defaultname}\` --> \`${defaultname.replace("{member}", message.author.username).replace("{count}", 0)}\``.substring(0, 1024), true)
+                        .addField("Mensaje de Respuesta:", `> ${replyMsg}`.substring(0, 1024), true)
+                        .addField("Emoji de Ticket:", `> ${emojiMsg}`.substring(0, 1024), true)
 
                     ]
                   });
@@ -1064,7 +1105,7 @@ module.exports = {
               menumsg.edit({
                 embeds: [menumsg.embeds[0].setDescription(`~~${menumsg.embeds[0].description}~~`)],
                 components: [],
-                content: `<a:yes:833101995723194437> **Selected: \`${collected.size > 0 ? collected.first().values[0] : "NOTHING"}\`**`
+                content: `<a:ys4:989016203525750825> **Seleccionado: \`${collected.size > 0 ? collected.first().values[0] : "NOTHING"}\`**`
               })
             });
           }
@@ -1155,13 +1196,13 @@ module.exports = {
             });
           }
             break;
-          case "Closed Ticket Category": {
+          case "Categoría de Tickets Cerrados": {
             let parentId = theDB.get(message.guild.id, `${pre}.closedParent`);
             let parent = parentId ? message.guild.channels.cache.get(parentId) : null;
             var rembed = new MessageEmbed()
               .setColor(es.color)
               .setFooter(client.getFooter(es))
-              .setTitle("What should be the new Closed Ticket Category?")
+              .setTitle("Escribe la Categoría de los Tickets Cerrados!")
               .setDescription(`Currently it's: \`${parentId ? "Not Setupped yet" : parent ? parent.name : `Channel not Found: ${parentId}`}\`!\nWhen closing a Ticket, it will be moved to there until it get's deleted!\n> **Send the new __PARENT ID__ now!**`)
             message.reply({
               embeds: [rembed]
@@ -1198,13 +1239,13 @@ module.exports = {
             })
           } break;
 
-          case "Manage General Access": {
+          case "Añadir rol de Tickets": {
             let tempmsg = await message.reply({
               embeds: [
                 new MessageEmbed()
                   .setColor(es.color)
-                  .setTitle("What User(s) or Role(s) do you want to add/remove?")
-                  .setDescription(`Just ping them! If they are already added, they will get removed!`)
+                  .setTitle("Menciona un Rol!")
+                  .setDescription(`Menciona el Rol`)
               ]
             });
 
@@ -1238,9 +1279,9 @@ module.exports = {
               for (const remove of toremove) {
                 theDB.remove(message.guild.id, remove, pre + ".access");
               }
-              message.reply(`👍 Successfully added \`${toadd.length} Users/Roles\` and removed \`${toremove.length} Users/Roles\`\n> They are now always able to see, write and manage stuff in the TICKETS ment for them!`)
+              message.reply(`<a:ys4:989016203525750825> añadido: \`${toadd.length} al Soporte de Tickets`)
             } else {
-              message.reply(":x: **You did not ping valid user(s)**")
+              message.reply(":x: **No hizo ping a usuarios válidos**")
             }
           } break;
         }
@@ -1299,12 +1340,3 @@ module.exports = {
     }
   },
 };
-/**
- * @INFO
- * Bot Coded by Tomato#6966 | https://discord.gg/milrato
- * @INFO
- * Work for Milrato Development | https://milrato.eu
- * @INFO
- * Please mention him / Milrato Development, when using this Code!
- * @INFO
- */
